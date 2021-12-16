@@ -16,5 +16,8 @@ The [`Dockerfile`](./Dockerfile) multi-stage build recipe uses `cdn-npm.ash` and
 
 ## License
 
-[Creative Commons Public Domain (CC0)]() or [MIT License](./LICENSE) at your discretion. Free to use.
+tl;dr -- Free to use.
+
+[Creative Commons Public Domain (CC0)](https://creativecommons.org/publicdomain/zero/1.0/)
+or [MIT License](./LICENSE) at your discretion. 
 
