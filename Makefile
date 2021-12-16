@@ -1,13 +1,13 @@
 SHELL ?= /bin/bash
 
-dkr_run: ## Run the Container
-	docker run -it --rm -p 9097:80 $(docker build .)
-
 dkr_build: ## Build the Image
-	docker build .
+	@ docker build .
 
 dkr_rebuild: ## Rebuild the Image
-	docker build --pull .
+	@ docker build --pull .
+
+dkr_run: dkr_build ## Run the Container
+	@ docker run -it --rm -p 7080:80 -p 7043:443 -p 7019:2019 $$(docker build -q .)
 
 .ONESHELL: dkr_run dkr_build dkr_rebuild
 

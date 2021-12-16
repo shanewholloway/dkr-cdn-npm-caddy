@@ -1,0 +1,32 @@
+{
+	auto_https off
+	on_demand_tls {
+		interval 2m
+		burst    5
+	}
+	local_certs
+	skip_install_trust
+}
+
+(cdn_cfg) {
+	header {args.0} Cache-Control max-age=600000 # approximately 1 week
+
+	file_server {args.0} {
+		browse
+		precompressed br gzip zstd
+		hide .*
+	}
+}
+
+http:// {
+	root * /srv
+	import cdn_cfg /*
+}
+
+https:// {
+	tls internal {
+		on_demand
+	}
+	root * /srv
+	import cdn_cfg /*
+}
