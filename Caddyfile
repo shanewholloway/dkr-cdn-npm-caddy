@@ -9,24 +9,27 @@
 }
 
 (cdn_cfg) {
-	header {args.0} Cache-Control max-age=600000 # approximately 1 week
+	root * /srv
+	route {
+		header {args.0}/* Cache-Control max-age=600000 # approximately 1 week
 
-	file_server {args.0} {
-		browse
-		precompressed br gzip zstd
-		hide .*
+		file_server {args.0}/* {
+			precompressed br gzip zstd
+			hide .*
+			{$CDN_FILE_SERVER_CFG}
+		}
+
+		respond * "CDN item not found" 404
 	}
 }
 
 http:// {
-	root * /srv
-	import cdn_cfg /*
+	import cdn_cfg /cdn
 }
 
 https:// {
 	tls internal {
 		on_demand
 	}
-	root * /srv
-	import cdn_cfg /*
+	import cdn_cfg /cdn
 }

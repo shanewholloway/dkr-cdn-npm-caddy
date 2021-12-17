@@ -2,7 +2,7 @@
 
 DEPS_FILE=$1
 if [ ! -f "$DEPS_FILE" ]; then
-  echo "Use: cdn-npm.ash deps.txt"
+  echo "Use: cdn-npm.ash cdn-deps.txt"
   exit 1
 fi
 
