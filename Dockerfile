@@ -2,7 +2,7 @@ FROM node:lts-alpine as cdn_npm_builder
 WORKDIR /srv
 COPY cdn-npm.ash /usr/local/bin/cdn-npm
 RUN npm install -g fx
-COPY cdn-deps.txt ./
+COPY ./cdn-npm/cdn-deps.txt ./
 CMD ["/bin/ash", "/usr/local/bin/cdn-npm", "./cdn-deps.txt"]
 
 FROM cdn_npm_builder as cdn_npm_example

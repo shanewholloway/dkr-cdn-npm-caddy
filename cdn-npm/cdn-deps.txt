@@ -1,2 +1,1 @@
-ky@0.28.7
-imm-dom@0.0.33
+ky@latest
